@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#090b12" />
+    <meta name="description" content="Drop in for a round of Vector Blocks, a neon-bright modern take on the classic block-stacking game." />
+    <title>Vector Blocks — Tetris</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Vector Blocks home">
+          <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          <span>VECTOR<span class="brand-light">BLOCKS</span></span>
+        </a>
+        <div class="topbar-tag"><span class="live-dot"></span> ARCADE MODE <span class="tag-divider">/</span> 001</div>
+      </header>
+
+      <main class="game-layout">
+        <section class="intro" aria-labelledby="page-title">
+          <p class="eyebrow"><span>01</span> THE CLASSIC, REWIRED</p>
+          <h1 id="page-title">Make room<br />for <span>one more.</span></h1>
+          <p class="intro-copy">Stack clean. Think ahead. Keep the board alive.</p>
+        </section>
+
+        <section class="game-area" aria-label="Tetris game">
+          <aside class="side-panel left-panel" aria-label="Game statistics">
+            <div class="panel-label">YOUR RUN <span class="label-line"></span></div>
+            <div class="stat-card score-card">
+              <span class="stat-label">SCORE</span>
+              <strong id="score">000000</strong>
+              <span class="score-spark" aria-hidden="true">✳</span>
+            </div>
+            <div class="stat-card compact-stat">
+              <span class="stat-label">BEST</span>
+              <strong id="best">000000</strong>
+            </div>
+            <div class="stat-pair">
+              <div class="stat-card compact-stat"><span class="stat-label">LEVEL</span><strong id="level">01</strong></div>
+              <div class="stat-card compact-stat"><span class="stat-label">LINES</span><strong id="lines">00</strong></div>
+            </div>
+            <div class="mini-panel hold-panel">
+              <div class="mini-heading"><span>HOLD</span><span class="mini-key">C</span></div>
+              <canvas id="hold-canvas" width="120" height="104" aria-label="Held piece"></canvas>
+              <span id="hold-status" class="mini-hint">SAVE FOR LATER</span>
+            </div>
+          </aside>
+
+          <div class="board-column">
+            <div class="board-topline"><span><i class="live-dot"></i> LIVE BOARD</span><span class="board-dimensions">10 × 20</span></div>
+            <div class="board-frame">
+              <canvas id="game-canvas" width="300" height="600" aria-label="Tetris board. Use arrow keys to move and rotate pieces."></canvas>
+              <div id="overlay" class="board-overlay" hidden>
+                <div class="overlay-card">
+                  <span id="overlay-kicker" class="overlay-kicker">PAUSED</span>
+                  <strong id="overlay-title">Take a breath.</strong>
+                  <span id="overlay-copy">Your stack will be right here.</span>
+                  <button id="overlay-button" class="primary-button">RESUME GAME <span>→</span></button>
+                </div>
+              </div>
+            </div>
+            <div class="board-footer"><span><span class="footer-dot"></span> NO PRESSURE. JUST BLOCKS.</span><span>EST. 1984</span></div>
+          </div>
+
+          <aside class="side-panel right-panel" aria-label="Next pieces and controls">
+            <div class="panel-label">UP NEXT <span class="label-line"></span></div>
+            <div class="mini-panel next-panel">
+              <canvas id="next-canvas" width="120" height="380" aria-label="Upcoming pieces"></canvas>
+              <span class="mini-hint">FIVE PIECES AHEAD</span>
+            </div>
+            <div class="controls-card">
+              <div class="panel-label">CONTROLS <span class="label-line"></span></div>
+              <div class="control-row"><span>MOVE</span><span class="key-group"><kbd>←</kbd><kbd>→</kbd></span></div>
+              <div class="control-row"><span>SOFT DROP</span><kbd>↓</kbd></div>
+              <div class="control-row"><span>ROTATE</span><kbd class="wide-key">↑ / X</kbd></div>
+              <div class="control-row"><span>HARD DROP</span><kbd class="wide-key">SPACE</kbd></div>
+              <div class="control-row"><span>HOLD</span><kbd>C</kbd></div>
+              <div class="control-row"><span>PAUSE</span><kbd>P</kbd></div>
+            </div>
+          </aside>
+        </section>
+
+        <section class="mobile-controls" aria-label="Touch controls">
+          <button data-action="left" aria-label="Move left">←</button>
+          <button data-action="rotate" aria-label="Rotate piece">↻</button>
+          <button data-action="right" aria-label="Move right">→</button>
+          <button data-action="down" aria-label="Soft drop">↓</button>
+          <button data-action="drop" aria-label="Hard drop">DROP</button>
+          <button data-action="hold" aria-label="Hold piece">HOLD</button>
+        </section>
+
+        <footer class="page-footer"><span>BUILT FOR THE LOVE OF THE GAME.</span><button id="restart-button" class="text-button">RESTART RUN <span>↗</span></button><span>TAKE YOUR TIME. <span class="footer-accent">THEN DROP.</span></span></footer>
+      </main>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
